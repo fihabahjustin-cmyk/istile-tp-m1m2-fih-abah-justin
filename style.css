@@ -1,0 +1,224 @@
+/* ===== Variables : couleurs de la charte ISTILE ===== */
+:root {
+  --bleu: #1941b3;
+  --bleu-fonce: #0f2a7a;
+  --rouge: #ff135a;
+  --vert: #1c8275;
+  --vert-fonce: #14665b;
+  --fond: #f2f5fb;
+  --texte: #1f2937;
+  --ombre: 0 4px 12px rgba(25, 65, 179, 0.15);
+}
+
+/* ===== Base ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: system-ui, Arial, sans-serif;
+  line-height: 1.6;
+  background: var(--fond);
+  color: var(--texte);
+}
+
+/* ===== En-tête et navigation ===== */
+header {
+  background: linear-gradient(135deg, var(--bleu), var(--bleu-fonce));
+  border-bottom: 4px solid var(--rouge);
+  color: #ffffff;
+  padding: 1.25rem 1rem;
+}
+
+header h1 {
+  margin: 0 0 0.75rem;
+  font-size: 1.8rem;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+nav a {
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+nav a:hover {
+  background: #ffffff;
+  color: var(--bleu);
+}
+
+/* ===== Contenu principal ===== */
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+h2 {
+  color: var(--bleu);
+  border-left: 5px solid var(--rouge);
+  padding-left: 0.75rem;
+}
+
+/* ===== Formulaire de recherche ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  box-shadow: var(--ombre);
+}
+
+label {
+  font-weight: 600;
+}
+
+input {
+  flex: 1;
+  padding: 0.6rem 0.75rem;
+  border: 2px solid #c5cddb;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+input:focus {
+  border-color: var(--bleu);
+}
+
+button {
+  padding: 0.65rem 1.25rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: var(--vert);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: var(--vert-fonce);
+}
+
+/* ===== Focus visible (navigation au clavier) ===== */
+a:focus-visible,
+input:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--rouge);
+  outline-offset: 2px;
+}
+
+nav a:focus-visible {
+  outline-color: #ffffff;
+}
+
+/* ===== Cartes des étudiants : 1 colonne par défaut ===== */
+.liste {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.carte {
+  background: #ffffff;
+  padding: 1.25rem;
+  border-top: 5px solid var(--vert);
+  border-radius: 0.75rem;
+  box-shadow: var(--ombre);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.carte:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(25, 65, 179, 0.25);
+}
+
+.carte h3 {
+  margin: 0 0 0.5rem;
+  color: var(--bleu);
+}
+
+.carte p {
+  margin: 0 0 0.25rem;
+  color: #4b5563;
+}
+
+.carte p:last-child {
+  color: var(--vert);
+  font-weight: 700;
+}
+
+/* ===== Contact ===== */
+#contact a {
+  color: var(--bleu);
+  font-weight: 600;
+}
+
+/* ===== Pied de page ===== */
+footer {
+  background: var(--bleu-fonce);
+  color: #ffffff;
+  text-align: center;
+  padding: 1rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* ===== Écrans à partir de 640 px : 2 colonnes ===== */
+@media (min-width: 640px) {
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 2rem;
+  }
+
+  header h1 {
+    margin: 0;
+  }
+
+  .liste {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  form {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* ===== Écrans à partir de 1024 px : 3 colonnes ===== */
+@media (min-width: 1024px) {
+  .liste {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

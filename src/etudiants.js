@@ -1,7 +1,12 @@
+// Arrondit un nombre à 2 décimales (11.575 donne 11.58)
+function arrondir(nombre) {
+  return Math.round(nombre * 100) / 100;
+}
+
 export function moyenneGenerale(liste) {
   if (!liste || liste.length === 0) return 0;
   const somme = liste.reduce((acc, { note }) => acc + note, 0);
-  return Number((somme / liste.length).toFixed(2));
+  return arrondir(somme / liste.length);
 }
 
 export function admis(liste) {
@@ -32,7 +37,7 @@ export function moyenneParFiliere(liste) {
   return Object.fromEntries(
     Object.entries(resultatsParFiliere).map(([filiere, { somme, count }]) => [
       filiere,
-      Number((somme / count).toFixed(2))
+      arrondir(somme / count)
     ])
   );
 }

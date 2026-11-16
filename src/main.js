@@ -10,59 +10,59 @@ import {
 } from "./etudiants.js";
 import { chargerUtilisateurs, chargerUtilisateur } from "./charger.js";
 
-// Décommentez les lignes ci-dessous en cas d'absence de connexion Internet :
+// Pas de connexion Internet ? Décommentez les deux lignes suivantes :
 // import { simulerFetch } from "../outils/simulerFetch.js";
 // globalThis.fetch = simulerFetch;
 
-// --- EXÉCUTION PARTIE D ---
+// ===== PARTIE D : traitements sur etudiants.json =====
 const etudiants = JSON.parse(
   await readFile(new URL("../data/etudiants.json", import.meta.url), "utf8")
 );
 
-console.log("=== 1. Moyenne Générale ===");
+console.log("=== 1. Moyenne générale ===");
 console.log(moyenneGenerale(etudiants));
 
-console.log("\n=== 2. Étudiants Admis ===");
+console.log("\n=== 2. Étudiants admis (note >= 10) ===");
 console.log(admis(etudiants));
 
-console.log("\n=== 3. Noms Formatés ===");
+console.log("\n=== 3. Noms formatés ===");
 console.log(nomsFormates(etudiants));
 
-console.log("\n=== 4. Effectif par Filière ===");
+console.log("\n=== 4. Effectif par filière ===");
 console.log(effectifParFiliere(etudiants));
 
-console.log("\n=== 5. Moyenne par Filière ===");
+console.log("\n=== 5. Moyenne par filière ===");
 console.log(moyenneParFiliere(etudiants));
 
-console.log("\n=== 6. Classement par Note ===");
+console.log("\n=== 6. Classement par note ===");
+const premierAvant = etudiants[0];
 const classement = classementParNote(etudiants);
 console.log(classement);
 
-console.log("\n--- Preuve d'immutabilité 1 ---");
-console.log("Note originale du 1er :", etudiants[0].note);
-console.log("Note triée du 1er :", classement[0].note);
-console.log("Tableaux distincts :", etudiants !== classement);
+console.log("\n--- Preuve d'immutabilité 1 (classementParNote) ---");
+console.log("Premier de la liste d'origine :", etudiants[0].prenom, etudiants[0].nom);
+console.log("Premier de la liste d'origine inchangé :", etudiants[0] === premierAvant);
+console.log("Premier du classement :", classement[0].prenom, classement[0].nom);
+console.log("Ce sont deux tableaux différents :", etudiants !== classement);
 
-console.log("\n=== 7. Modification de note (majNote) ===");
-const etudiantOriginal = etudiants.find(e => e.id === 1);
+console.log("\n=== 7. Modification d'une note (majNote) ===");
+const etudiantOriginal = etudiants.find(({ id }) => id === 1);
 const ancienneNote = etudiantOriginal.note;
 const nouvelleListe = majNote(etudiants, 1, 18.5);
-const etudiantModifie = nouvelleListe.find(e => e.id === 1);
+const etudiantModifie = nouvelleListe.find(({ id }) => id === 1);
 
-console.log("--- Preuve d'immutabilité 2 ---");
-console.log("Objets différents :", etudiantOriginal !== etudiantModifie);
-console.log("Ancienne note inchangée :", ancienneNote);
-console.log("Nouvelle note :", etudiantModifie.note);
+console.log("--- Preuve d'immutabilité 2 (majNote) ---");
+console.log("Ancien et nouvel objet sont différents :", etudiantOriginal !== etudiantModifie);
+console.log("Note de l'ancien objet après majNote :", etudiantOriginal.note);
+console.log("L'ancienne note n'a pas changé :", etudiantOriginal.note === ancienneNote);
+console.log("Note du nouvel objet :", etudiantModifie.note);
 
-// --- EXÉCUTION PARTIE E ---
-console.log("\n=== SCÉNARIO 1 : Succès chargerUtilisateurs(3) ===");
-const res1 = await chargerUtilisateurs(3);
-console.log(res1);
+// ===== PARTIE E : asynchronisme et API =====
+console.log("\n=== SCÉNARIO 1 : succès, chargerUtilisateurs(3) ===");
+console.log(await chargerUtilisateurs(3));
 
-console.log("\n=== SCÉNARIO 2 : Utilisateur inexistant chargerUtilisateur(99999) ===");
-const res2 = await chargerUtilisateur(99999);
-console.log(res2);
+console.log("\n=== SCÉNARIO 2 : utilisateur inexistant, chargerUtilisateur(99999) ===");
+console.log(await chargerUtilisateur(99999));
 
-console.log("\n=== SCÉNARIO 3 : Erreur réseau chargerUtilisateurs(3, hote-invalide) ===");
-const res3 = await chargerUtilisateurs(3, "https://hote-invalide.exemple");
-console.log(res3);
+console.log("\n=== SCÉNARIO 3 : erreur réseau, hôte invalide ===");
+console.log(await chargerUtilisateurs(3, "https://hote-invalide.exemple"));

@@ -3,11 +3,10 @@
   --bleu: #1941b3;
   --bleu-fonce: #0f2a7a;
   --bleu-clair: #e8eefc;
+  --rouge: #ff135a;
   --vert: #1c8275;
   --vert-fonce: #14665b;
   --vert-clair: #e6f4f2;
-  --rouge-badge: #dc2626;
-  --orange-badge: #d97706;
   --fond: #f4f7fb;
   --blanc: #ffffff;
   --texte: #1f2937;
@@ -48,6 +47,7 @@ body {
 
 .logo-container {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 0.75rem;
@@ -114,6 +114,7 @@ h2 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .stat-card {
@@ -150,7 +151,6 @@ h2 {
   padding: 1.25rem;
   border-radius: 0.75rem;
   box-shadow: var(--ombre);
-  margin-bottom: 1.5rem;
 }
 
 form {
@@ -190,12 +190,34 @@ select:focus {
   box-shadow: 0 0 0 3px rgba(25, 65, 179, 0.15);
 }
 
+/* Bouton de recherche */
+button {
+  padding: 0.65rem 1.25rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: var(--vert);
+  color: var(--blanc);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: var(--vert-fonce);
+}
+
 /* ===== Focus visible (accessibilité clavier) ===== */
 a:focus-visible,
 input:focus-visible,
-select:focus-visible {
-  outline: 3px solid var(--vert);
+select:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--rouge);
   outline-offset: 2px;
+}
+
+nav a:focus-visible {
+  outline-color: var(--blanc);
 }
 
 /* ===== Cartes des étudiants ===== */
@@ -224,6 +246,7 @@ select:focus-visible {
 
 .carte-header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
   gap: 0.5rem;
@@ -263,6 +286,7 @@ select:focus-visible {
   margin: 0 0 1rem;
   font-size: 0.9rem;
   color: var(--texte-secondaire);
+  overflow-wrap: anywhere;
 }
 
 .carte-footer {
@@ -293,33 +317,12 @@ select:focus-visible {
 
 .note.warning {
   background: #fef3c7;
-  color: var(--orange-badge);
+  color: #92400e;
 }
 
 .note.danger {
   background: #fee2e2;
-  color: var(--rouge-badge);
-}
-
-/* ===== Section API Externe ===== */
-.api-desc {
-  color: var(--texte-secondaire);
-  margin-bottom: 0.75rem;
-}
-
-.api-box {
-  background: #0f172a;
-  color: #38bdf8;
-  padding: 1rem 1.25rem;
-  border-radius: 0.75rem;
-  font-family: monospace;
-  overflow-x: auto;
-}
-
-.api-console-simule {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
+  color: #b91c1c;
 }
 
 /* ===== Section Contact ===== */
@@ -385,6 +388,7 @@ footer p {
 
   form {
     flex-direction: row;
+    align-items: flex-end;
   }
 
   .liste {

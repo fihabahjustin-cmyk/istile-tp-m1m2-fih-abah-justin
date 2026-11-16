@@ -9,42 +9,19 @@
   <body>
     <header class="header-principal">
       <div class="logo-container">
-        <h1>ISTILE</h1>
-        <span class="badge-niveau">Niveau 3 - Annuaire Officiel</span>
+        <h1>ISTILE Annuaire</h1>
+        <span class="badge-niveau">Niveau 3</span>
       </div>
       <nav aria-label="Navigation principale">
-        <a href="#dashboard">Tableau de bord</a>
-        <a href="#annuaire">Étudiants</a>
-        <a href="#api-section">API & Démo</a>
+        <a href="#recherche">Recherche</a>
+        <a href="#etudiants">Étudiants</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
     <main>
-      <section id="dashboard" class="section-dashboard">
-        <h2>Indicateurs Clés</h2>
-        <div class="stats-grid">
-          <div class="stat-card">
-            <h3>Effectif Total</h3>
-            <p class="stat-value">20</p>
-            <span class="stat-desc">Étudiants inscrits en L3</span>
-          </div>
-          <div class="stat-card">
-            <h3>Moyenne Générale</h3>
-            <p class="stat-value">11.75</p>
-            <span class="stat-desc">Sur l'ensemble de la promo</span>
-          </div>
-          <div class="stat-card">
-            <h3>Taux de Réussite</h3>
-            <p class="stat-value">75%</p>
-            <span class="stat-desc">Notes supérieures ou égales à 10</span>
-          </div>
-        </div>
-      </section>
-
-      <section id="annuaire" class="section-annuaire">
-        <h2>Annuaire des Étudiants</h2>
-        
+      <section id="recherche">
+        <h2>Recherche</h2>
         <div class="barre-outils">
           <form role="search" onsubmit="event.preventDefault();">
             <div class="input-group">
@@ -60,7 +37,29 @@
                 <option value="Génie logiciel">Génie logiciel</option>
               </select>
             </div>
+            <button type="submit">Rechercher</button>
           </form>
+        </div>
+      </section>
+
+      <section id="etudiants">
+        <h2>Annuaire des Étudiants</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <h3>Effectif Total</h3>
+            <p class="stat-value">20</p>
+            <span class="stat-desc">Étudiants inscrits en L3</span>
+          </div>
+          <div class="stat-card">
+            <h3>Moyenne Générale</h3>
+            <p class="stat-value">11.58</p>
+            <span class="stat-desc">Sur l'ensemble de la promo</span>
+          </div>
+          <div class="stat-card">
+            <h3>Taux de Réussite</h3>
+            <p class="stat-value">65%</p>
+            <span class="stat-desc">Notes supérieures ou égales à 10</span>
+          </div>
         </div>
 
         <div class="liste">
@@ -138,21 +137,10 @@
         </div>
       </section>
 
-      <section id="api-section" class="section-api">
-        <h2>Intégration API Externe (DummyJSON)</h2>
-        <p class="api-desc">Test des flux asynchrones et des mécanismes de secours (fallback hors ligne).</p>
-        <div class="api-box">
-          <div class="api-console-simule">
-            <code>&gt; chargerUtilisateurs(3) executed successfully.</code>
-            <code>&gt; chargerUtilisateur(99999) -&gt; 404 Not Found (Géré proprement).</code>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="section-contact">
+      <section id="contact">
         <h2>Secrétariat Académique</h2>
         <div class="contact-card">
-          <p>Pour toute réclamation de notes ou information administrative :</p>
+          <p>Pour toute réclamation de notes ou information administrative : secretariat@istile.cm</p>
           <a href="mailto:secretariat@istile.cm" class="btn-contact">Envoyer un e-mail au secrétariat</a>
         </div>
       </section>

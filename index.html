@@ -2,152 +2,136 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ISTILE - Portail Académique & Annuaire L3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ISTILE Annuaire</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header class="header-principal">
-      <div class="logo-container">
-        <h1>ISTILE Annuaire</h1>
-        <span class="badge-niveau">Niveau 3</span>
+    <header>
+      <div class="conteneur">
+        <div>
+          <h1>ISTILE Annuaire</h1>
+          <p class="sous-titre">Les étudiants de niveau 3</p>
+        </div>
+        <nav aria-label="Navigation principale">
+          <a href="#recherche">Recherche</a>
+          <a href="#etudiants">Étudiants</a>
+          <a href="#contact">Contact</a>
+        </nav>
       </div>
-      <nav aria-label="Navigation principale">
-        <a href="#recherche">Recherche</a>
-        <a href="#etudiants">Étudiants</a>
-        <a href="#contact">Contact</a>
-      </nav>
     </header>
 
-    <main>
+    <main class="conteneur">
       <section id="recherche">
         <h2>Recherche</h2>
-        <div class="barre-outils">
-          <form role="search" onsubmit="event.preventDefault();">
-            <div class="input-group">
-              <label for="recherche-etudiant">Filtrer par nom :</label>
-              <input type="text" id="recherche-etudiant" placeholder="Ex: Aïcha, Paul..." />
-            </div>
-            <div class="filter-group">
-              <label for="filtre-filiere">Filière :</label>
-              <select id="filtre-filiere">
-                <option value="">Toutes les filières</option>
-                <option value="Informatique">Informatique</option>
-                <option value="Réseaux">Réseaux</option>
-                <option value="Génie logiciel">Génie logiciel</option>
-              </select>
-            </div>
+        <form>
+          <label for="champ-recherche">Nom d'un étudiant</label>
+          <div class="champs">
+            <input type="text" id="champ-recherche" name="recherche" placeholder="Ex : Aïcha, Paul..." />
             <button type="submit">Rechercher</button>
-          </form>
-        </div>
+          </div>
+        </form>
       </section>
 
       <section id="etudiants">
-        <h2>Annuaire des Étudiants</h2>
-        <div class="stats-grid">
-          <div class="stat-card">
-            <h3>Effectif Total</h3>
-            <p class="stat-value">20</p>
-            <span class="stat-desc">Étudiants inscrits en L3</span>
+        <h2>Étudiants</h2>
+        <div class="bilan">
+          <div class="bilan-chiffres">
+            <div>
+              <p class="bilan-valeur">20</p>
+              <p class="bilan-label">Étudiants dans le fichier</p>
+            </div>
+            <div>
+              <p class="bilan-valeur">11.58</p>
+              <p class="bilan-label">Moyenne générale</p>
+            </div>
+            <div class="reussite">
+              <p class="bilan-valeur">65 %</p>
+              <p class="bilan-label">Réussite (13 admis)</p>
+            </div>
+            <div class="echec">
+              <p class="bilan-valeur">35 %</p>
+              <p class="bilan-label">Échec (7 étudiants)</p>
+            </div>
           </div>
-          <div class="stat-card">
-            <h3>Moyenne Générale</h3>
-            <p class="stat-value">11.58</p>
-            <span class="stat-desc">Sur l'ensemble de la promo</span>
+          <div class="bilan-barre" aria-hidden="true">
+            <span class="part-reussite" style="width: 65%"></span>
+            <span class="part-echec" style="width: 35%"></span>
           </div>
-          <div class="stat-card">
-            <h3>Taux de Réussite</h3>
-            <p class="stat-value">65%</p>
-            <span class="stat-desc">Notes supérieures ou égales à 10</span>
-          </div>
+          <p class="bilan-note">Calculé sur les 20 étudiants de etudiants.json. Une note supérieure ou égale à 10 compte comme une réussite.</p>
         </div>
 
         <div class="liste">
-          <article class="carte">
-            <div class="carte-header">
+          <article class="carte informatique">
+            <span class="avatar" aria-hidden="true">AN</span>
+            <div>
               <h3>Aïcha Ngo</h3>
-              <span class="badge-filiere informatique">Informatique</span>
+              <p class="filiere">Informatique</p>
             </div>
-            <p class="email">aicha.ngo@istile.cm</p>
-            <div class="carte-footer">
-              <span class="niveau">L3</span>
-              <span class="note success">Note : 14/20</span>
-            </div>
+            <p class="note">Note : <strong>14</strong>/20</p>
+            <div class="barre" aria-hidden="true"><span style="width: 70%"></span></div>
           </article>
 
-          <article class="carte">
-            <div class="carte-header">
+          <article class="carte reseaux">
+            <span class="avatar" aria-hidden="true">PT</span>
+            <div>
               <h3>Paul Tchinda</h3>
-              <span class="badge-filiere reseaux">Réseaux</span>
+              <p class="filiere">Réseaux</p>
             </div>
-            <p class="email">paul.tchinda@istile.cm</p>
-            <div class="carte-footer">
-              <span class="niveau">L3</span>
-              <span class="note warning">Note : 9/20</span>
-            </div>
+            <p class="note">Note : <strong>9</strong>/20</p>
+            <div class="barre" aria-hidden="true"><span style="width: 45%"></span></div>
           </article>
 
-          <article class="carte">
-            <div class="carte-header">
+          <article class="carte genie">
+            <span class="avatar" aria-hidden="true">MF</span>
+            <div>
               <h3>Marie Fotso</h3>
-              <span class="badge-filiere gl">Génie logiciel</span>
+              <p class="filiere">Génie logiciel</p>
             </div>
-            <p class="email">marie.fotso@istile.cm</p>
-            <div class="carte-footer">
-              <span class="niveau">L3</span>
-              <span class="note success">Note : 16/20</span>
-            </div>
+            <p class="note">Note : <strong>16</strong>/20</p>
+            <div class="barre" aria-hidden="true"><span style="width: 80%"></span></div>
           </article>
 
-          <article class="carte">
-            <div class="carte-header">
+          <article class="carte informatique">
+            <span class="avatar" aria-hidden="true">CN</span>
+            <div>
               <h3>Christelle Nkou</h3>
-              <span class="badge-filiere informatique">Informatique</span>
+              <p class="filiere">Informatique</p>
             </div>
-            <p class="email">christelle.nkou@istile.cm</p>
-            <div class="carte-footer">
-              <span class="niveau">L3</span>
-              <span class="note success">Note : 11.5/20</span>
-            </div>
+            <p class="note">Note : <strong>11.5</strong>/20</p>
+            <div class="barre" aria-hidden="true"><span style="width: 57.5%"></span></div>
           </article>
 
-          <article class="carte">
-            <div class="carte-header">
+          <article class="carte reseaux">
+            <span class="avatar" aria-hidden="true">BE</span>
+            <div>
               <h3>Brice Essomba</h3>
-              <span class="badge-filiere reseaux">Réseaux</span>
+              <p class="filiere">Réseaux</p>
             </div>
-            <p class="email">brice.essomba@istile.cm</p>
-            <div class="carte-footer">
-              <span class="niveau">L3</span>
-              <span class="note danger">Note : 7.5/20</span>
-            </div>
+            <p class="note">Note : <strong>7.5</strong>/20</p>
+            <div class="barre" aria-hidden="true"><span style="width: 37.5%"></span></div>
           </article>
 
-          <article class="carte">
-            <div class="carte-header">
+          <article class="carte genie">
+            <span class="avatar" aria-hidden="true">LM</span>
+            <div>
               <h3>Linda Mvondo</h3>
-              <span class="badge-filiere gl">Génie logiciel</span>
+              <p class="filiere">Génie logiciel</p>
             </div>
-            <p class="email">linda.mvondo@istile.cm</p>
-            <div class="carte-footer">
-              <span class="niveau">L3</span>
-              <span class="note success">Note : 13/20</span>
-            </div>
+            <p class="note">Note : <strong>13</strong>/20</p>
+            <div class="barre" aria-hidden="true"><span style="width: 65%"></span></div>
           </article>
         </div>
       </section>
 
       <section id="contact">
-        <h2>Secrétariat Académique</h2>
-        <div class="contact-card">
-          <p>Pour toute réclamation de notes ou information administrative : secretariat@istile.cm</p>
-          <a href="mailto:secretariat@istile.cm" class="btn-contact">Envoyer un e-mail au secrétariat</a>
-        </div>
+        <h2>Contact</h2>
+        <p>Une question sur l'annuaire ? Écrivez au secrétariat : <a href="mailto:secretariat@istile.cm">secretariat@istile.cm</a></p>
       </section>
     </main>
 
     <footer>
-      <p>© 2026 ISTILE · Mini-TP Modules 1 et 2 - Programmation Web Moderne</p>
+      <p>© 2026 ISTILE · Mini-TP Modules 1 et 2</p>
     </footer>
   </body>
 </html>

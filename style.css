@@ -1,18 +1,16 @@
-/* ===== Variables : charte ISTILE modernisée ===== */
+/* ===== Variables : couleurs de la charte ISTILE ===== */
 :root {
   --bleu: #1941b3;
   --bleu-fonce: #0f2a7a;
-  --bleu-clair: #e8eefc;
   --rouge: #ff135a;
+  --rouge-fonce: #b3063a;
   --vert: #1c8275;
   --vert-fonce: #14665b;
-  --vert-clair: #e6f4f2;
-  --fond: #f4f7fb;
+  --fond: #f4f6fb;
   --blanc: #ffffff;
-  --texte: #1f2937;
-  --texte-secondaire: #4b5563;
-  --bordure: #e2e8f0;
-  --ombre: 0 4px 12px rgba(15, 42, 122, 0.08);
+  --texte: #1b2033;
+  --texte-doux: #4a5470;
+  --bordure: #d5dbeb;
 }
 
 /* ===== Base ===== */
@@ -22,387 +20,361 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   margin: 0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   line-height: 1.6;
   background: var(--fond);
   color: var(--texte);
 }
 
-/* ===== En-tête et navigation (sans ligne rouge) ===== */
-.header-principal {
+/* Zone centrée, réutilisée par l'en-tête et le contenu principal */
+.conteneur {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* ===== En-tête et navigation ===== */
+header {
   background: linear-gradient(135deg, var(--bleu), var(--bleu-fonce));
   color: var(--blanc);
-  padding: 1.25rem 1.5rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
 }
 
-.logo-container {
+header .conteneur {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
-.header-principal h1 {
+h1 {
   margin: 0;
-  font-size: 1.8rem;
-  letter-spacing: 0.5px;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
-.badge-niveau {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 0.25rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  font-weight: 600;
+.sous-titre {
+  margin: 0.4rem 0 0;
+  color: #dbe4ff;
 }
 
 nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 1.5rem;
 }
 
 nav a {
-  padding: 0.45rem 1rem;
-  border-radius: 0.5rem;
-  background: rgba(255, 255, 255, 0.12);
+  padding: 0.25rem 0;
+  border-bottom: 3px solid transparent;
   color: var(--blanc);
+  font-weight: 600;
   text-decoration: none;
-  font-weight: 500;
-  transition: background 0.2s, color 0.2s;
 }
 
 nav a:hover {
-  background: var(--blanc);
-  color: var(--bleu);
+  border-bottom-color: var(--blanc);
 }
 
 /* ===== Contenu principal ===== */
 main {
   flex: 1;
-  width: 100%;
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 1.5rem 1rem;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
 }
 
-section {
-  margin-bottom: 2.5rem;
+section + section {
+  margin-top: 3rem;
 }
 
 h2 {
+  margin: 0 0 1.25rem;
+  font-size: 1.6rem;
   color: var(--bleu-fonce);
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 2px solid var(--bordure);
 }
 
-/* ===== Tableau de bord : Indicateurs clés ===== */
-.stats-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+/* Petit trait vert sous chaque titre de section */
+h2::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 4px;
+  margin-top: 0.5rem;
+  border-radius: 2px;
+  background: var(--vert);
 }
 
-.stat-card {
-  background: var(--blanc);
-  padding: 1.25rem;
-  border-radius: 0.75rem;
-  border-left: 4px solid var(--bleu);
-  box-shadow: var(--ombre);
-}
-
-.stat-card h3 {
-  margin: 0;
-  font-size: 0.95rem;
-  color: var(--texte-secondaire);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.stat-value {
-  margin: 0.4rem 0;
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--bleu);
-}
-
-.stat-desc {
-  font-size: 0.85rem;
-  color: var(--texte-secondaire);
-}
-
-/* ===== Barre d'outils (Recherche & Filtre) ===== */
-.barre-outils {
-  background: var(--blanc);
-  padding: 1.25rem;
-  border-radius: 0.75rem;
-  box-shadow: var(--ombre);
-}
-
+/* ===== Formulaire de recherche ===== */
 form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.input-group,
-.filter-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  flex: 1;
+  padding: 1.25rem;
+  background: var(--blanc);
+  border: 1px solid var(--bordure);
+  border-radius: 0.75rem;
 }
 
 label {
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--texte);
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
 }
 
-input,
-select {
-  padding: 0.65rem 0.85rem;
-  border: 1px solid #cbd5e1;
+.champs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #7a86a8;
   border-radius: 0.5rem;
-  font-size: 1rem;
   background: var(--blanc);
   color: var(--texte);
+  font: inherit;
 }
 
-input:focus,
-select:focus {
+input:focus {
   border-color: var(--bleu);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(25, 65, 179, 0.15);
 }
 
-/* Bouton de recherche */
 button {
-  padding: 0.65rem 1.25rem;
+  padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 0.5rem;
-  background: var(--vert);
+  background: var(--bleu);
   color: var(--blanc);
-  font-size: 1rem;
-  font-weight: 600;
+  font: inherit;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.2s;
 }
 
 button:hover {
-  background: var(--vert-fonce);
+  background: var(--bleu-fonce);
 }
 
-/* ===== Focus visible (accessibilité clavier) ===== */
+/* ===== Focus visible (navigation au clavier) ===== */
 a:focus-visible,
 input:focus-visible,
-select:focus-visible,
 button:focus-visible {
   outline: 3px solid var(--rouge);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
 nav a:focus-visible {
   outline-color: var(--blanc);
 }
 
-/* ===== Cartes des étudiants ===== */
+/* ===== Bilan : statistiques de la promotion ===== */
+.bilan {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  background: var(--blanc);
+  border: 1px solid var(--bordure);
+  border-left: 8px solid var(--bleu);
+  border-radius: 0.75rem;
+}
+
+/* Les 4 chiffres se répartissent automatiquement selon la largeur disponible */
+.bilan-chiffres {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 1rem;
+}
+
+.bilan-chiffres p {
+  margin: 0;
+}
+
+.bilan-valeur {
+  color: var(--bleu);
+  font-size: 1.8rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.bilan-label {
+  color: var(--texte-doux);
+  font-size: 0.9rem;
+}
+
+.reussite .bilan-valeur {
+  color: var(--vert-fonce);
+}
+
+.echec .bilan-valeur {
+  color: var(--rouge-fonce);
+}
+
+/* Barre réussite / échec : vert pour les admis, rouge pour les autres */
+.bilan-barre {
+  display: flex;
+  height: 0.75rem;
+  margin-top: 1rem;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.part-reussite {
+  background: var(--vert);
+}
+
+.part-echec {
+  background: var(--rouge);
+}
+
+.bilan-note {
+  margin: 0.75rem 0 0;
+  color: var(--texte-doux);
+  font-size: 0.85rem;
+}
+
+/* ===== Cartes des étudiants : 1 colonne par défaut ===== */
 .liste {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.25rem;
+  gap: 1rem;
+}
+
+/* Chaque filière a sa couleur : --accent pour les traits, --accent-fonce pour le texte */
+.informatique {
+  --accent: var(--bleu);
+  --accent-fonce: var(--bleu);
+}
+
+.reseaux {
+  --accent: var(--vert);
+  --accent-fonce: var(--vert-fonce);
+}
+
+.genie {
+  --accent: var(--rouge);
+  --accent-fonce: var(--rouge-fonce);
 }
 
 .carte {
-  background: var(--blanc);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.5rem 1rem;
   padding: 1.25rem;
-  border-radius: 0.75rem;
+  background: var(--blanc);
   border: 1px solid var(--bordure);
-  box-shadow: var(--ombre);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.2s, box-shadow 0.2s;
+  border-left: 8px solid var(--accent);
+  border-radius: 0.75rem;
 }
 
-.carte:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(25, 65, 179, 0.14);
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--accent-fonce);
+  color: var(--blanc);
+  font-weight: 700;
 }
 
-.carte-header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.carte-header h3 {
+.carte h3 {
   margin: 0;
-  color: var(--bleu-fonce);
   font-size: 1.15rem;
 }
 
-.badge-filiere {
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 0.2rem 0.6rem;
-  border-radius: 999px;
-  white-space: nowrap;
+.filiere {
+  margin: 0;
+  color: var(--accent-fonce);
+  font-weight: 600;
 }
 
-.badge-filiere.informatique {
-  background: var(--bleu-clair);
-  color: var(--bleu);
-}
-
-.badge-filiere.reseaux {
-  background: var(--vert-clair);
-  color: var(--vert-fonce);
-}
-
-.badge-filiere.gl {
-  background: #f3e8ff;
-  color: #6b21a8;
-}
-
-.email {
-  margin: 0 0 1rem;
-  font-size: 0.9rem;
-  color: var(--texte-secondaire);
-  overflow-wrap: anywhere;
-}
-
-.carte-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--bordure);
-}
-
-.niveau {
-  font-weight: 700;
-  font-size: 0.85rem;
-  color: var(--texte-secondaire);
+/* La note et la barre prennent toute la largeur de la carte */
+.note,
+.barre {
+  grid-column: 1 / -1;
 }
 
 .note {
-  font-weight: 700;
-  font-size: 0.9rem;
-  padding: 0.2rem 0.6rem;
-  border-radius: 0.375rem;
+  margin: 0.5rem 0 0;
+  color: var(--texte-doux);
 }
 
-.note.success {
-  background: var(--vert-clair);
-  color: var(--vert-fonce);
+.note strong {
+  color: var(--texte);
+  font-size: 1.5rem;
 }
 
-.note.warning {
-  background: #fef3c7;
-  color: #92400e;
+/* Barre de note : sa largeur (en %) correspond à la note sur 20 */
+.barre {
+  height: 0.5rem;
+  border-radius: 999px;
+  background: #e3e8f5;
+  overflow: hidden;
 }
 
-.note.danger {
-  background: #fee2e2;
-  color: #b91c1c;
+.barre span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
 }
 
-/* ===== Section Contact ===== */
-.contact-card {
-  background: var(--blanc);
-  padding: 1.5rem;
-  border-radius: 0.75rem;
-  box-shadow: var(--ombre);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: flex-start;
-}
-
-.contact-card p {
+/* ===== Contact ===== */
+#contact p {
   margin: 0;
+  padding: 1.25rem;
+  background: var(--blanc);
+  border: 1px solid var(--bordure);
+  border-left: 8px solid var(--vert);
+  border-radius: 0.75rem;
 }
 
-.btn-contact {
-  display: inline-block;
-  padding: 0.65rem 1.25rem;
-  background: var(--vert);
-  color: var(--blanc);
-  text-decoration: none;
-  font-weight: 600;
-  border-radius: 0.5rem;
-  transition: background 0.2s;
-}
-
-.btn-contact:hover {
-  background: var(--vert-fonce);
+#contact a {
+  color: var(--bleu);
+  font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 /* ===== Pied de page ===== */
 footer {
+  padding: 1.5rem 1rem;
   background: var(--bleu-fonce);
   color: var(--blanc);
   text-align: center;
-  padding: 1.25rem 1rem;
-  font-size: 0.9rem;
 }
 
 footer p {
   margin: 0;
 }
 
-/* ===== Responsive : Tablettes (640px+) ===== */
+/* ===== Écrans à partir de 640 px : 2 colonnes ===== */
 @media (min-width: 640px) {
-  .header-principal {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.25rem 2rem;
-  }
-
-  .logo-container {
-    margin-bottom: 0;
-  }
-
-  .stats-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  form {
+  header .conteneur {
     flex-direction: row;
+    justify-content: space-between;
     align-items: flex-end;
+  }
+
+  h1 {
+    font-size: 2.8rem;
+  }
+
+  .champs {
+    flex-direction: row;
   }
 
   .liste {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .contact-card {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
 }
 
-/* ===== Responsive : Grands écrans (1024px+) ===== */
+/* ===== Écrans à partir de 1024 px : 3 colonnes ===== */
 @media (min-width: 1024px) {
   .liste {
     grid-template-columns: repeat(3, 1fr);

@@ -162,6 +162,13 @@ button:hover {
   background: var(--bleu-fonce);
 }
 
+/* Message sous le formulaire : nombre d'étudiants trouvés */
+#resultat {
+  margin: 0.75rem 0 0;
+  color: var(--texte-doux);
+  font-size: 0.9rem;
+}
+
 /* ===== Focus visible (navigation au clavier) ===== */
 a:focus-visible,
 input:focus-visible,
@@ -271,6 +278,11 @@ nav a:focus-visible {
   border: 1px solid var(--bordure);
   border-left: 8px solid var(--accent);
   border-radius: 0.75rem;
+}
+
+/* Une carte masquée par la recherche (attribut hidden) ne doit plus s'afficher */
+.carte[hidden] {
+  display: none;
 }
 
 .avatar {

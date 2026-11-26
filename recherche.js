@@ -1,4 +1,5 @@
 // Recherche d'un étudiant : les cartes se filtrent quand on tape dans le champ
+// On peut chercher par prénom, par nom ou par filière
 
 const champ = document.getElementById("champ-recherche");
 const formulaire = document.querySelector("#recherche form");
@@ -13,10 +14,12 @@ function normaliser(texte) {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
-// Une carte correspond si le nom de l'étudiant contient tous les mots tapés
+// Une carte correspond si son prénom, son nom ou sa filière contient tous les mots tapés
 function correspond(carte, mots) {
-  const nom = normaliser(carte.querySelector("h3").textContent);
-  return mots.every((mot) => nom.includes(mot));
+  const nom = carte.querySelector("h3").textContent;
+  const filiere = carte.querySelector(".filiere").textContent;
+  const texte = normaliser(`${nom} ${filiere}`);
+  return mots.every((mot) => texte.includes(mot));
 }
 
 // Écrit le message sous le formulaire
